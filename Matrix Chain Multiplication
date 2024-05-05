@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <limits.h>
+
+// Function to find the minimum number of scalar multiplications needed to multiply the chain of matrices
+int matrixChainOrder(int p[], int n) {
+    int m[n][n]; // m[i][j] will store the minimum number of scalar multiplications needed to compute the matrix product A[i]A[i+1]...A[j]
+    int i, j, k, L, q;
+
+    // Initialize the cost matrix
+    for (i = 1; i < n; i++)
+        m[i][i] = 0;
+
+    // L is the chain length
+    for (L = 2; L < n; L++) {
+        for (i = 1; i < n - L + 1; i++) {
+            j = i + L - 1;
+  
