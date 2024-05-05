@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <limits.h>
+
+#define V 4 // Number of vertices
+
+// Function to find the minimum of two integers
+int min(int x, int y) {
+    return (x < y) ? x : y;
+}
+
+// Function to solve the Traveling Salesman Problem using dynamic programming
+int tsp(int graph[][V], int mask, int pos, int n, int dp[][V]) {
+    // If all cities have been visited, return the cost of going back to the first city
+    if (mask == (1 << n) - 1)
+        return graph[pos][0];
+
+    // If the subproblem has already been computed, return the result
+    if (dp[mask][pos] != -1)
+        return dp[mask][pos];
+
+    int ans =
